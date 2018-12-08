@@ -13,18 +13,18 @@ function parseJson(response) {
 	return response.json();
 }
 
-function sortByNameDescending(slice) {
+function sortByNameAscending(slice) {
 	if (!slice instanceof Array) {
 		return slice
 	}
 	return slice.sort(function sortName(a, b) {
-		var nameA = a.name.toUpperCase();
-		var nameB = b.name.toUpperCase();
-		return nameA === nameB ? 0 : nameA < nameB ? 1 : -1;
+		var nameA = a.Name.toUpperCase();
+		var nameB = b.Name.toUpperCase();
+		return nameA === nameB ? 0 : nameA > nameB ? 1 : -1;
 	})
 }
 
-function httpRaceCall(id) {
+function httpGetRaceCall(id) {
 	return fetch('http://' + window.location.hostname + ':8080/api/races/' + id, {
 		method: 'get',
 		mode: "cors", // no-cors, cors, *same-origin
@@ -34,7 +34,7 @@ function httpRaceCall(id) {
 	});
 }
 
-function httpRacesCall() {
+function httpGetRacesCall() {
 	return fetch('http://' + window.location.hostname + ':8080/api/races', {
 		method: 'get',
 		mode: "cors", // no-cors, cors, *same-origin
@@ -45,15 +45,15 @@ function httpRacesCall() {
 }
 
 export function getRace(id) {
-	return httpRaceCall(id)
+	return httpGetRaceCall(id)
 		.then(checkStatus)
 		.then(parseJson);
 }
 
 export function getRaces() {
-	return httpRacesCall()
+	return httpGetRacesCall()
 		.then(checkStatus)
 		.then(parseJson)
-    .then(sortByNameDescending);
+    .then(sortByNameAscending);
 }
 
