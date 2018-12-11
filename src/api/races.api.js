@@ -13,6 +13,11 @@ function parseJson(response) {
 	return response.json();
 }
 
+function computeURL(slice) {
+	slice.map(race => race.url = "/races/" + race.ID)
+	return slice
+}
+
 function sortByNameAscending(slice) {
 	if (!slice instanceof Array) {
 		return slice
@@ -28,7 +33,7 @@ function httpGetRaceCall(id) {
 	return fetch('http://' + window.location.hostname + ':8080/api/races/' + id, {
 		method: 'get',
 		mode: "cors", // no-cors, cors, *same-origin
-        headers: {
+		headers: {
 			accept: 'application/json'
 		}
 	});
@@ -38,7 +43,7 @@ function httpGetRacesCall() {
 	return fetch('http://' + window.location.hostname + ':8080/api/races', {
 		method: 'get',
 		mode: "cors", // no-cors, cors, *same-origin
-        headers: {
+		headers: {
 			accept: 'application/json'
 		}
 	});
@@ -54,6 +59,6 @@ export function getRaces() {
 	return httpGetRacesCall()
 		.then(checkStatus)
 		.then(parseJson)
-    .then(sortByNameAscending);
+		.then(sortByNameAscending)
+		.then(computeURL);
 }
-

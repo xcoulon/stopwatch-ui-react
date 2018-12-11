@@ -14,14 +14,14 @@ function parseJson(response) {
 	return response.json();
 }
 
-function sortByNameAscending(slice) {
+function sortByBibNumberAscending(slice) {
 	if (!slice instanceof Array) {
 		return slice
 	}
 	return slice.sort(function sortName(a, b) {
-		var nameA = a.Name.toUpperCase();
-		var nameB = b.Name.toUpperCase();
-		return nameA === nameB ? 0 : nameA > nameB ? 1 : -1;
+		var bibA = a.BibNumber;
+		var bibB = b.BibNumber;
+		return bibA > bibB ? 1 : -1;
 	})
 }
 
@@ -49,7 +49,7 @@ export function getTeams(raceID) {
 	return httpGetTeamsCall(raceID)
 		.then(checkStatus)
 		.then(parseJson)
-    	.then(sortByNameAscending);
+    	.then(sortByBibNumberAscending);
 }
 
 export function addLap(raceID, bibnumber) {
