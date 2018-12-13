@@ -13,8 +13,8 @@ function parseJson(response) {
 	return response.json();
 }
 
-function computeURL(slice) {
-	slice.map(race => race.url = "/races/" + race.ID)
+function computeHrefs(slice) {
+	slice.map(race => race.Href = "/races/" + race.ID)
 	return slice
 }
 
@@ -60,5 +60,5 @@ export function getRaces() {
 		.then(checkStatus)
 		.then(parseJson)
 		.then(sortByNameAscending)
-		.then(computeURL);
+		.then(computeHrefs);
 }
