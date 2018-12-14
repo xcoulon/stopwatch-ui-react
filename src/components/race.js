@@ -25,14 +25,12 @@ const styles = {
     "text-align": "center",
     "font-family": "'Roboto', sans-serif;"
   },
-  card: {
-    margin: 5
-  },
   button: {
     margin: 0
   },
   startButton: {
     float: "right",
+    "margin-right": 10,
   }
 };
 
@@ -64,7 +62,7 @@ class Race extends React.Component {
     return (
       <div>
         <div>
-          <Button className={classes.startButton}>start</Button>
+          <Button className={classes.startButton} variant="contained" color="primary">start</Button>
           <h1 className={classes.title}>{this.state.race.Name}</h1>
         </div>
         <div className={classes.root}>

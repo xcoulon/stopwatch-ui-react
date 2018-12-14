@@ -12,24 +12,14 @@ const styles = {
     "grid-template-columns": "repeat(20, 80px)",
     "grid-template-rows": "repeat(12, 100px)"
   },
-  card: {
-    margin: 5
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    fontSize: 14
-  },
-  pos: {
-    marginBottom: 12
+  buttonwrapper: {
+    margin: "0 auto"
   },
   button: {
-    margin: 0
+    margin: 0,
+    display: "inline",
+    "font-size": 18,
   },
-
   icons: {
     padding: 0,
     display: "block",
@@ -65,20 +55,20 @@ class TeamCard extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={this.props.classes.buttonwrapper}>
         <Button
           className={this.props.classes.button}
           size="small"
           onClick={this.addLap}
         >
-          {this.state.team.BibNumber}
-        </Button>
-        <div>
+        <div>{this.state.team.BibNumber}</div>  
         <div className={classes.icons}>
           {this.state.team.Laps.map(lap => (
             <InfoFlag key={lap.ID} className={this.props.classes.icon} />
           ))}
         </div>
+        </Button>
+        <div>
         </div>
       </div>
     );
