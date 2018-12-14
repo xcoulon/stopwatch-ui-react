@@ -135,6 +135,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import InfoIcon from "@material-ui/icons/Info";
+import TeamCard from './team.view';
 
 import * as teams from "../../api/teams.api";
 
@@ -164,57 +165,16 @@ const styles = {
   }
 };
 
-function handleClick(raceId, bibNumber) {
-  console.log("one more lap for team with number " + bibNumber);
-  teams.addLap(raceId, bibNumber).then(team => {
-    console.log("updated team: " + team);
-    team.setState({ team: team });
-  });
-}
 
-function TeamCards(props) {
+function TeamList(props) {
+
   const { classes, teams } = props;
   const bull = <span className={classes.bullet}>•</span>;
 
   const cards = teams.map(team => (
-    // <Card className={classes.card}>
-    //   <CardContent>
-    //     <Typography className={classes.title} color="textSecondary" gutterBottom>
-    //       Word of the Day
-    //     </Typography>
-    //     <Typography >
-    //       {team.BibNumber}
-    //     </Typography>
-
-    //     <Typography className={classes.pos} color="textSecondary">
-    //       adjective
-    //     </Typography>
-    //     <Typography component="p">
-    //       well meaning and kindly.
-    //       <br />
-    //       {'"a benevolent smile"'}
-    //     </Typography>
-    //   </CardContent>
-    //   <CardActions>
-    //   <Button className={classes.button} size="large">{team.BibNumber}</Button>
-    //     <Button size="small">Learn More</Button>
-    //   </CardActions>
-    // </Card>
-    <div>
-
-    <Button
-      className={classes.button}
-      size="small"
-      onClick={() => handleClick(team.RaceID, team.BibNumber)}
-      >
-      {team.BibNumber}
-    </Button>
-    {team.Laps.map(lap =>
-        <InfoIcon/>
-        )}
-        </div>
-
+    <TeamCard team={team} key={team.ID}/>
   ));
+
   return (
     <div className={classes.root}>
       <div className={classes.list}>{cards}</div>
@@ -222,10 +182,9 @@ function TeamCards(props) {
   );
 }
 
-TeamCards.propTypes = {
-  classes: PropTypes.object.isRequired
+TeamList.propTypes = {
+  classes: PropTypes.object.isRequired,
+  teams: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(TeamCards);
-
-
+export default withStyles(styles)(TeamList);

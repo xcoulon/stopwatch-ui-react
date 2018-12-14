@@ -11,8 +11,7 @@ import ComponentProperty from './components/containers/home';
 ReactDOM.render(
   <Router history={browserHistory}>
     <div>
-      <Route exact path="/" component={ComponentProperty} />
-      <Route exact path="/races" component={RaceListContainer} />
+      <Route exact path="/" component={RaceListContainer} />
       <Route path="/races/:raceID" component={TeamListContainer} />
     </div>
   </Router>
