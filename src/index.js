@@ -5,13 +5,13 @@ import {
   Route
 } from 'react-router-dom';
 import RaceList from './components/race.list';
-import TeamListContainer from './components/containers/team.list.container';
+import Race from './components/race';
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <div>
       <Route exact path="/" component={RaceList} />
-      <Route path="/races/:raceID" component={TeamListContainer} />
+      <Route path="/races/:raceID" component={Race} />
     </div>
   </Router>
   ,

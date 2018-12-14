@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -33,6 +32,7 @@ const styles = {
 
   icons: {
     padding: 0,
+    display: "block",
     margin: "auto"
   },
 
@@ -53,10 +53,12 @@ class TeamCard extends React.Component {
     console.log(
       "one more lap for team with number " + this.state.team.BibNumber
     );
-    teams.addLap(this.state.team.RaceID, this.state.team.BibNumber).then(team => {
-      console.log("updated team " + team.BibNumber);
-      this.setState({ team: team });
-    });
+    teams
+      .addLap(this.state.team.RaceID, this.state.team.BibNumber)
+      .then(team => {
+        console.log("updated team " + team.BibNumber);
+        this.setState({ team: team });
+      });
   };
 
   render() {
@@ -71,10 +73,12 @@ class TeamCard extends React.Component {
         >
           {this.state.team.BibNumber}
         </Button>
+        <div>
         <div className={classes.icons}>
           {this.state.team.Laps.map(lap => (
-            <InfoFlag className={this.props.classes.icon} />
+            <InfoFlag key={lap.ID} className={this.props.classes.icon} />
           ))}
+        </div>
         </div>
       </div>
     );
