@@ -51,6 +51,17 @@ class Race extends React.Component {
       );
     });
   }
+  startRace = event => {
+    console.log(
+      "race " + this.state.race.Name
+    );
+    races
+      .startRace(this.state.race.ID);
+      // .then(team => {
+      //   console.log("updated team " + team.BibNumber);
+      //   this.setState({ team: team });
+      // });
+  };
   render() {
     const { classes } = this.props;
     if (!this.state.fetched) {
@@ -62,7 +73,12 @@ class Race extends React.Component {
     return (
       <div>
         <div>
-          <Button className={classes.startButton} variant="contained" color="primary">start</Button>
+          <Button className={classes.startButton} variant="contained" color="primary" 
+          onClick={this.startRace}
+          >start</Button>
+          <Button className={classes.startButton} variant="contained" color="primary" 
+          onClick={this.startRace}
+          >1st lap</Button>
           <h1 className={classes.title}>{this.state.race.Name}</h1>
         </div>
         <div className={classes.root}>
@@ -75,7 +91,6 @@ class Race extends React.Component {
 
 Race.propTypes = {
   classes: PropTypes.object.isRequired,
-  teams: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(Race);

@@ -49,6 +49,17 @@ function httpGetRacesCall() {
 	});
 }
 
+function httpStartRaceCall(raceID) {
+	return fetch('http://' + window.location.hostname + ':8080/api/races/' + raceID, {
+		method: 'PATCH',
+		body: '{"started":true}',
+		mode: "cors", // no-cors, cors, *same-origin
+		headers: {
+			accept: 'application/json'
+		}
+	});
+}
+
 export function getRace(id) {
 	return httpGetRaceCall(id)
 		.then(checkStatus)
@@ -61,4 +72,11 @@ export function getRaces() {
 		.then(parseJson)
 		.then(sortByNameAscending)
 		.then(computeHrefs);
+}
+
+export function startRace(raceID) {
+	return httpStartRaceCall(raceID)
+		.then(checkStatus)
+		.then(parseJson);
+		
 }
