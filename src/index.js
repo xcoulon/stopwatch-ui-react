@@ -4,14 +4,13 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import RaceListContainer from './components/containers/race.list.container';
+import RaceList from './components/race.list';
 import TeamListContainer from './components/containers/team.list.container';
-import ComponentProperty from './components/containers/home';
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <div>
-      <Route exact path="/" component={RaceListContainer} />
+      <Route exact path="/" component={RaceList} />
       <Route path="/races/:raceID" component={TeamListContainer} />
     </div>
   </Router>
