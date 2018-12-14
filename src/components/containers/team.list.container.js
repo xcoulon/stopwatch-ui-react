@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import * as teams from "../../api/teams.api";
 import * as races from "../../api/races.api";
-import RaceBoard from "../views/race.board.view";
+import TeamList from "../views/team.list.view";
 
-class RaceBoardContainer extends Component {
+class TeamListContainer extends Component {
   state = {
     fetched: false,
     teams: []
@@ -26,9 +26,9 @@ class RaceBoardContainer extends Component {
       return <div className="spinner" />;
     }
     return (
-      <RaceBoard racename={this.state.race.Name} teams={this.state.teams} />
+      <TeamList racename={this.state.race.Name} teams={this.state.teams} />
     );
   }
 }
 
-export default RaceBoardContainer;
+export default TeamListContainer;

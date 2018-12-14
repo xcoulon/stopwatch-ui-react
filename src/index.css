@@ -1,19 +1,15 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	margin: 20px;
 }
 
-.race-list {
-  width: 100%;
-  text-align: center;
-}
+/* .wrapper {
+	display: grid;
+	grid-template-columns: repeat(20, 80px);
+	grid-template-rows: repeat(12, 100px);
+} */
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(20, 80px);
-  grid-template-rows: repeat(12, 100px);
-}
-.status {
+/* .status {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
@@ -49,4 +45,4 @@ body {
 
 .laps svg {
   margin: 2px;
-}
+} */

@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom';
 import RaceListContainer from './components/containers/race.list.container';
-import RaceBoardContainer from './components/containers/race.board.container';
+import TeamListContainer from './components/containers/team.list.container';
 import ComponentProperty from './components/containers/home';
 
 ReactDOM.render(
@@ -13,7 +13,7 @@ ReactDOM.render(
     <div>
       <Route exact path="/" component={ComponentProperty} />
       <Route exact path="/races" component={RaceListContainer} />
-      <Route path="/races/:raceID" component={RaceBoardContainer} />
+      <Route path="/races/:raceID" component={TeamListContainer} />
     </div>
   </Router>
   ,

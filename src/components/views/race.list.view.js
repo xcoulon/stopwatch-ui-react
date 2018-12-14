@@ -46,8 +46,9 @@ import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
-    display: "flex",
-    flexDirection: "column",
+    margin: "auto",
+    // display: "flex",
+    // flexDirection: "column",
     width: 360
   },
   lists: {
