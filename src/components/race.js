@@ -51,17 +51,25 @@ class Race extends React.Component {
       );
     });
   }
+
   startRace = event => {
     races.startRace(this.state.race.ID).then(race => {
       console.log("race started at " + race.StartTime);
       this.setState({ race: race });
     });
   };
+
   firstLap = event => {
     console.log("race " + this.state.race.Name);
-    races.startRace(this.state.race.ID).then(race => {
-      console.log("race started at " + race.StartTime);
-      this.setState({ race: race });
+    races.firstLap(this.state.race.ID).then(race => {
+      console.log("first lap for all teams! " + race.StartTime);
+      teams.getTeams(this.state.race.ID).then(teams =>
+        this.setState({
+          fetched: true,
+          teams: teams,
+          race: race
+        })
+      );
     });
   };
   render() {
@@ -89,6 +97,7 @@ class Race extends React.Component {
             variant="contained"
             color="primary"
             onClick={this.firstLap}
+            disabled={this.state.race.HasFirstLap}
           >
             1st lap
           </Button>

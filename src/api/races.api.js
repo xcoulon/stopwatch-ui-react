@@ -60,6 +60,17 @@ function httpStartRaceCall(raceID) {
 	});
 }
 
+function httpFirstLapCall(raceID) {
+	return fetch('http://' + window.location.hostname + ':8080/api/races/' + raceID + "/firstlap", {
+		method: 'POST',
+		body: '{"started":true}',
+		mode: "cors", // no-cors, cors, *same-origin
+		headers: {
+			accept: 'application/json'
+		}
+	});
+}
+
 export function getRace(id) {
 	return httpGetRaceCall(id)
 		.then(checkStatus)
@@ -78,5 +89,10 @@ export function startRace(raceID) {
 	return httpStartRaceCall(raceID)
 		.then(checkStatus)
 		.then(parseJson);
-		
+}
+
+export function firstLap(raceID) {
+	return httpFirstLapCall(raceID)
+		.then(checkStatus)
+		.then(parseJson);
 }
