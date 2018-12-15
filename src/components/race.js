@@ -30,7 +30,7 @@ const styles = {
   },
   startButton: {
     float: "right",
-    "margin-right": 10,
+    "margin-right": 10
   }
 };
 
@@ -52,15 +52,17 @@ class Race extends React.Component {
     });
   }
   startRace = event => {
-    console.log(
-      "race " + this.state.race.Name
-    );
-    races
-      .startRace(this.state.race.ID);
-      // .then(team => {
-      //   console.log("updated team " + team.BibNumber);
-      //   this.setState({ team: team });
-      // });
+    races.startRace(this.state.race.ID).then(race => {
+      console.log("race started at " + race.StartTime);
+      this.setState({ race: race });
+    });
+  };
+  firstLap = event => {
+    console.log("race " + this.state.race.Name);
+    races.startRace(this.state.race.ID).then(race => {
+      console.log("race started at " + race.StartTime);
+      this.setState({ race: race });
+    });
   };
   render() {
     const { classes } = this.props;
@@ -73,12 +75,23 @@ class Race extends React.Component {
     return (
       <div>
         <div>
-          <Button className={classes.startButton} variant="contained" color="primary" 
-          onClick={this.startRace}
-          >start</Button>
-          <Button className={classes.startButton} variant="contained" color="primary" 
-          onClick={this.startRace}
-          >1st lap</Button>
+          <Button
+            className={classes.startButton}
+            variant="contained"
+            color="primary"
+            onClick={this.startRace}
+            disabled={this.state.race.StartTime > "2018-12-15 11:52:13"}
+          >
+            start
+          </Button>
+          <Button
+            className={classes.startButton}
+            variant="contained"
+            color="primary"
+            onClick={this.firstLap}
+          >
+            1st lap
+          </Button>
           <h1 className={classes.title}>{this.state.race.Name}</h1>
         </div>
         <div className={classes.root}>
@@ -90,7 +103,7 @@ class Race extends React.Component {
 }
 
 Race.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(Race);

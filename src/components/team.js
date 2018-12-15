@@ -40,16 +40,16 @@ class TeamCard extends React.Component {
   }
 
   addLap = event => {
-    console.log(
-      "one more lap for team with number " + this.state.team.BibNumber
-    );
     teams
       .addLap(this.state.team.RaceID, this.state.team.BibNumber)
       .then(team => {
-        console.log("updated team " + team.BibNumber);
         this.setState({ team: team });
+        console.log(
+          "team #" + this.state.team.BibNumber + ": " + this.state.team.Laps[this.state.team.Laps.length-1].Time.substring(11, 19)); // 2018-12-16T12:34:56Z
       });
   };
+
+ 
 
   render() {
     const { classes } = this.props;
