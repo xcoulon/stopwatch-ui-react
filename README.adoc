@@ -1,0 +1,23 @@
+= Stopwatch UI React
+
+This is the front-end part of the application that allows for recording laps during run&bike events
+
+== Requirements
+
+- npm
+
+== How to run it
+
+The process to run the backend is pretty rudimentary for now. It could probably be improved in the future.
+
+```
+$ npm start
+
+```
+
+
+will start the front-end and open the browser to http://localhost:3000/ which should immediately connect to the server running on http://localhost:8080/
+
+== License
+
+This work is available under the Apache Version 2.0 license.
